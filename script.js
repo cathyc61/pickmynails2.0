@@ -71,7 +71,7 @@ confirmBtn.addEventListener('click', () => {
     if (selectedStyle) {
         selectedStyleText.innerText = selectedStyle;
         
-        const message = `Hey! ${selectedStyle} looks good!😏`;
+        const message = `Hey! ${selectedStyle} looks good!😏👍🏽`;
         const encodedMessage = encodeURIComponent(message);
         
         waLink.href = `https://api.whatsapp.com/send?phone=85260805756&text=${encodedMessage}`;
