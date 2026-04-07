@@ -1,0 +1,356 @@
+:root {
+    --primary-color: #ff8fab;
+    --bg-color: #ffe5ec;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    color: #fb6f92;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #555;
+    font-weight: 600;
+}
+
+.hint-text {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #fb6f92;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.6);
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 900px;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.nail-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    border: 4px solid transparent;
+    position: relative;
+}
+
+.nail-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(251, 111, 146, 0.3);
+}
+
+.nail-card.selected {
+    border-color: var(--primary-color);
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(251, 111, 146, 0.5);
+}
+
+.nail-card.selected::after {
+    content: '💙';
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    font-size: 1.4rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+}
+
+.zoom-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.85);
+    color: #fb6f92;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    pointer-events: none; /* Prevents the badge from blocking clicks on the image */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    z-index: 5;
+}
+
+.nail-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    cursor: zoom-in; /* Shows a magnifying glass cursor on desktop */
+}
+
+.nail-title {
+    padding: 1rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #fb6f92;
+}
+
+.confirm-btn {
+    background-color: #fb6f92;
+    color: white;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(251, 111, 146, 0.4);
+    margin-bottom: 3rem;
+}
+
+.confirm-btn:hover {
+    background-color: #ff8fab;
+    transform: scale(1.05);
+}
+
+.confirm-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Success Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-content {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-content h2 {
+    color: #fb6f92;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.modal-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.send-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    color: white;
+    transition: transform 0.2s ease;
+}
+
+.send-btn:hover {
+    transform: scale(1.05);
+}
+
+.wa-btn {
+    background-color: #25D366;
+}
+
+.close-btn {
+    background-color: transparent;
+    color: #888;
+    border: 1px solid #ffe5ec;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background-color: #ff8fab;
+    color: #333;
+}
+
+/* --- LIGHTBOX STYLES --- */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 2000; /* Higher than the success modal */
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lightbox-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.lightbox-img {
+    max-width: 95%;
+    max-height: 65vh;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    object-fit: contain;
+}
+
+.lightbox-overlay.active .lightbox-img {
+    transform: scale(1);
+}
+
+.lightbox-select-btn {
+    background-color: #fb6f92;
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(251, 111, 146, 0.4);
+}
+
+.lightbox-select-btn:hover {
+    background-color: #ff8fab;
+    transform: scale(1.05);
+}
+
+/* Updated Close Button for Mobile */
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 2001;
+    /* Added a background circle so it never gets lost in the picture */
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    line-height: 1;
+}
+
+/* .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    z-index: 2001;
+} */
+
+.lightbox-close:hover {
+    color: #fb6f92;
+}
+
+@media (max-width: 600px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .nail-image {
+        height: 180px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .lightbox-close {
+        top: 10px;
+        right: 20px;
+    }
+}

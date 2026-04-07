@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick My Nails! 💅</title>
+    
+    <!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <a href="https://cathychan.me/" style="text-decoration: none;"><h1>It's time 😘💕</h1></a>
+        <p>Pick your favorite one for my appointment on 11th April.</p>
+        <p class="hint-text">💡 Hint: Tap on any picture to see it closer!</p>
+    </header>
+
+    <div class="gallery">
+        <div class="nail-card" data-style="Shimmering Base with White Flowers">
+            <div class="zoom-badge">🔍 Tap to zoom</div>
+            <img src="https://i.imgur.com/NOdZbx1.jpeg" alt="Nail Style 1" class="nail-image">
+            <div class="nail-title">Shimmering Base with White Flowers</div>
+        </div>
+
+        <div class="nail-card" data-style="Purple Glitter French Tips">
+            <div class="zoom-badge">🔍 Tap to zoom</div>
+            <img src="https://i.imgur.com/1KqrMsP.jpeg" alt="Nail Style 2" class="nail-image">
+            <div class="nail-title">Purple Glitter French Tips</div>
+        </div>
+
+        <div class="nail-card" data-style="Chrome with Flowers and French Tips">
+            <div class="zoom-badge">🔍 Tap to zoom</div>
+            <img src="https://i.imgur.com/VCmJIyG.jpeg" alt="Nail Style 3" class="nail-image">
+            <div class="nail-title">Chrome with Flowers & French Tips</div>
+        </div>
+
+        <div class="nail-card" data-style="Pink and Purple Ombre">
+            <div class="zoom-badge">🔍 Tap to zoom</div>
+            <img src="https://i.imgur.com/JUK62DQ.jpeg" alt="Nail Style 4" class="nail-image">
+            <div class="nail-title">Pink & Purple Ombre</div>
+        </div>
+
+        <div class="nail-card" data-style="Ombre with Flowers">
+            <div class="zoom-badge">🔍 Tap to zoom</div>
+            <img src="https://i.imgur.com/3phPS8t.jpeg" alt="Nail Style 5" class="nail-image">
+            <div class="nail-title">Ombre with Flowers</div>
+        </div>
+
+        <div class="nail-card" data-style="Pink Cat Eye">
+            <div class="zoom-badge">🔍 Tap to zoom</div>
+            <img src="https://i.imgur.com/jU3su6i.jpeg" alt="Nail Style 6" class="nail-image">
+            <div class="nail-title">Pink Cat Eye</div>
+        </div>
+    </div>
+
+    <button class="confirm-btn" id="confirmBtn" disabled>Pick one first!</button>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <h2>Thanksss, psycho 💙</h2>
+            <p>You selected <strong id="selectedStyleName"></strong>.</p>
+            <p>Can't wait to show you! 😈</p>
+            
+            <div class="action-buttons">
+                <a href="#" id="waLink" class="send-btn wa-btn">Let Me Know:)</a>
+            </div>
+
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Lightbox Overlay for viewing pictures -->
+    <div class="lightbox-overlay" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <div class="lightbox-content-wrapper">
+            <img src="" alt="Enlarged Nail Style" class="lightbox-img" id="lightboxImg">
+            <button class="lightbox-select-btn" id="lightboxSelectBtn">This one!</button>
+        </div>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
