@@ -69,7 +69,7 @@ confirmBtn.addEventListener('click', () => {
         const encodedMessage = encodeURIComponent(message);
         
         // Set up the link for WhatsApp
-        waLink.href = `https://api.whatsapp.com/send?phone=85260805756&text=${encodedMessage}!This%20%F0%9F%91%8D%F0%9F%8F%BD`;
+        waLink.href = `https://api.whatsapp.com/send?phone=85260805756&text=${encodedMessage}! This%20%F0%9F%91%8D%F0%9F%8F%BD`;
 
         // Show Modal
         modal.classList.add('active');
